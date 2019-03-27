@@ -8,15 +8,15 @@ class RecipeItem extends React.Component {
             <div className="col-sm-3 mt-4">
                 <div className="card">
 
-                    {RecipesData.results.map((RecipesDetail, index) => {
+                    {RecipesData.results.map((RecipesDetail) => {
                         return (
                             <div>
-                                <img className="card-img-top img-fluid" src="https://via.placeholder.com/350x300"  alt="" />
+                                <img className="card-img-top img-fluid"  src={RecipesDetail.href} alt={RecipesDetail.thumbnail} />
                                 <div className="card-body">
                                     <h5 className="card-title">{RecipesDetail.title}</h5>
                                     <p className="card-text">
                                         <strong>Ingredients: </strong>{RecipesDetail.ingredients}
-                    </p>
+                                    </p>
                                 </div>
                             </div>
                         )
