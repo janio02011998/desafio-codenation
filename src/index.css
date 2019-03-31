@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
 .App .container {
   margin-top: 5rem;
 }

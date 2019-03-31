@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchString: []
+      searchString: ''
     };
   }
 
@@ -32,7 +32,7 @@ class App extends Component {
     } else {
       this.setState({ searchString: indexes });
     }
-  }
+   }
 
   render() {
     return (
@@ -40,10 +40,7 @@ class App extends Component {
         <Navbar onChange={this.onChange.bind(this)} />
         <div className="container mt-10">
           <div className="row">
-
-
             <RecipeItem list={this.state.searchString} />
-
           </div>
         </div>
       </div>
