@@ -26,27 +26,4 @@ const RecipeItem = (props) => {
     )
 }
 
-/*
-class RecipeItem extends React.Component {
-
-    render() {
-        return (
-            <div className="col-sm-3 mt-4">
-                <div className="card">
-                    <div>
-                        <img className="card-img-top img-fluid"  src={this.props.searchString.thumbnail} alt={this.props.searchString.title} />
-                        <div className="card-body">
-                            <h5 className="card-title">{this.props.searchString.title}</h5>
-                            <p className="card-text">
-                                <strong>Ingredients: </strong>{this.props.searchString.ingredients}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        );
-    }
-}
-*/
 export default RecipeItem;

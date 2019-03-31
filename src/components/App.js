@@ -19,10 +19,19 @@ class App extends Component {
   onChange(fieldName) {
     if (fieldName === '' || fieldName === null) this.setState({ searchString: data.results });
 
+    var ingredients = data.results.filter((item, i) => {
+      return item.ingredients.toLowerCase().indexOf(fieldName.toLowerCase()) !== -1;
+    })
+
     var indexes = data.results.filter((item, i) => {
       return item.title.toLowerCase().indexOf(fieldName.toLowerCase()) !== -1;
     })
-    this.setState({ searchString: indexes });
+    console.log(indexes);
+    if (indexes.length === 0) {
+      this.setState({ searchString: ingredients });
+    } else {
+      this.setState({ searchString: indexes });
+    }
   }
 
   render() {
@@ -31,10 +40,10 @@ class App extends Component {
         <Navbar onChange={this.onChange.bind(this)} />
         <div className="container mt-10">
           <div className="row">
-            
-            
-              <RecipeItem list={this.state.searchString} />
-            
+
+
+            <RecipeItem list={this.state.searchString} />
+
           </div>
         </div>
       </div>
