@@ -1,34 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Navbar from './Navbar'
 import RecipeItem from './RecipeItem'
-import RecipesData from '../sample_data/recipes.json';
-
+import data from "../sample_data/recipes.json";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchString: ''
+      searchString: []
     };
   }
 
-render() {
-  return (
-    <div className="App">
-      <Navbar />
-      <div className="container mt-10">
-        <div className="row">
-          {RecipesData.results.map(recipe => 
-                <RecipeItem
-                  title={recipe.title}
-                  ingredients={recipe.ingredients}
-                  source={recipe.href}
-                  thumbnail={recipe.thumbnail} />
-          )}
+  componentDidMount() {
+    this.setState({ searchString: data.results })
+
+  }
+
+  onChange(fieldName) {
+    if (fieldName === '' || fieldName === null) this.setState({ searchString: data.results });
+
+    var indexes = data.results.filter((item, i) => {
+      return item.title.toLowerCase().indexOf(fieldName.toLowerCase()) !== -1;
+    })
+    this.setState({ searchString: indexes });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Navbar onChange={this.onChange.bind(this)} />
+        <div className="container mt-10">
+          <div className="row">
+            
+            
+              <RecipeItem list={this.state.searchString} />
+            
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
-}
+
 export default App;
